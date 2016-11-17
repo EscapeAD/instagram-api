@@ -2,6 +2,16 @@ class HomeController < ApplicationController
   before_action :set_call, only: [:connect,:callback]
   def index
     render :login if session[:access_token].nil?
+    @client = Instagram.client(access_token: session[:access_token])
+    if params[:tag].nil?
+      # @photos = @client.media_popular
+      @photos = @client.user_recent_media
+
+    elsif !params[:tag].nil?
+      # @photos = @client.tag_search("#{params[:tag]}")
+      @photos = @client.tag('tag')
+    end
+
   end
 
   def connect

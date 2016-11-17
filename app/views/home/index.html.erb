@@ -1,0 +1,9 @@
+<div class='container'>
+  <div class='row'>
+    <% @photos.each do |photo| %>
+    <div class='col-md-2 col-xs-4'>
+      <%= image_tag(photo.images.thumbnail.url, class: 'thumbnail') %>
+    </div>
+    <% end %>
+  </div>
+</div>

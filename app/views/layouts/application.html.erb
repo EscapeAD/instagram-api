@@ -10,6 +10,20 @@
   </head>
 
   <body>
+    <div class='container'>
+    <h1>Instagram Web Application</h1>
+    <div class='center-text'>
+  <%= form_tag '/', method: :get do %>
+  <%= label_tag( "Search for Tag:") %>
+  <%= text_field_tag :tag %>
+  <%= submit_tag "Search" %>
+  <% end %>
+</div>
+    </div>
+
+
+
+
     <%= yield %>
   </body>
 </html>
