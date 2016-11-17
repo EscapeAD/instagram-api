@@ -4,12 +4,9 @@ class HomeController < ApplicationController
     render :login if session[:access_token].nil?
     @client = Instagram.client(access_token: session[:access_token])
     if params[:tag].nil?
-      # @photos = @client.media_popular
       @photos = @client.user_recent_media
-
     elsif !params[:tag].nil?
-      # @photos = @client.tag_search("#{params[:tag]}")
-      @photos = @client.tag('tag')
+      @photos = @client.user_recent_media
     end
 
   end
@@ -25,6 +22,7 @@ class HomeController < ApplicationController
   end
 
   private
+  
   def set_call
     @callback = "http://localhost:3000/oauth/callback"
   end
